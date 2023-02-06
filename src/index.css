@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(0, 179, 255);
 }
 
 code {
@@ -15,6 +16,11 @@ code {
 #vehicle_type_container {
   display: flex;
   flex-direction: row;
+  border: 2px solid gray;
+}
+
+#specific_vehicle_search {
+  border: 2px solid grey;
 }
 
 #vehicle_display_container {
@@ -23,6 +29,7 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px 20px;
+  border: 2px solid gray;
 }
 
 #each_vehicle {

@@ -1,7 +1,5 @@
 function SelectedVehicle({ vehicle }) {
     
-    console.log('chosen vehicle in selected vehicle:', vehicle)
-
     return (
         <div id="each_vehicle" >
             <strong style={{display: "block"}}>{vehicle.manufacturer_name} {vehicle.model}</strong>
@@ -14,7 +12,7 @@ function SelectedVehicle({ vehicle }) {
             {vehicle.charging_speed_level_1 ? 
               <><strong style={{display: "block"}}>Charging Speed (per hour of charging):</strong><p style={{display: "inline"}}><em>Level 1: </em>{vehicle.charging_speed_level_1} | <em>Level 2: </em>{vehicle.charging_speed_level_2} | <em>DC Fast: </em>{vehicle.charging_speed_dc_fast}</p></>
                 : null}
-            <strong style={{display: "block"}}>Battery Capacity: </strong><p style={{display: "inline"}}>{vehicle.battery_capacity_kwh} </p>
+            <strong style={{display: "block"}}>Battery Capacity: </strong><p style={{display: "inline"}}>{vehicle.battery_capacity_kwh} kWh</p>
             <strong style={{display: "block"}}>Engine/Motor(s): </strong><p style={{display: "inline"}}>{vehicle.engine_size}</p>
             <strong style={{display: "block"}}>Drivetrain: </strong><p style={{display: "inline"}}>{vehicle.drivetrain}</p>
             <br/>
