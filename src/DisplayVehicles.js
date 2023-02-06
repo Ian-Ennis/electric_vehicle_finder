@@ -9,7 +9,7 @@ function DisplayVehicles({vehicles, gothereby}) {
     //     console.log('each vehicle:', vehicle)
     // })
 
-    console.log('gothereby:', gothereby)
+    // console.log('gothereby:', gothereby)
 
     return (
         <>
