@@ -22,7 +22,7 @@ function EV() {
   const [chosenVehicle, setChosenVehicle] = useState([])
 
 
-  const latestVehicles = [
+  const msrp = [
     {
       id: 13221,
       // year: 2023,
@@ -508,8 +508,6 @@ function EV() {
   const pullVehicles = (e) => {
     e.preventDefault()
 
-    // console.log(e.target.alt)
-
     if (e.target.alt === "sedan_icon") {
       const sedans = [];
       for (let i = 0; i < vehicles.length; i++) {
@@ -539,9 +537,25 @@ function EV() {
       }
     }
   }
+  
+  const makesByYear = [];
+  const showMakes = (e) => {
+    e.preventDefault()
 
-  // const makesByYear = [];
-  // if (vehicles.length) {
+    const modelYear = e.target.value
+    
+    for (let i = 0; i < vehicles.length; i++) {
+      if (vehicles[i].model_year === modelYear && !makesByYear.includes(vehicles[i].manufacturer_name)) {
+        makesByYear.push(vehicles[i].manufacturer_name);
+        }
+      }
+      console.log('makesByYear:', makesByYear)
+  }
+
+  console.log('makes by year array:', makesByYear)
+    
+    // if (vehicles.length) {
+    // const makesByYear = [];
   //   for (let i = 0; i < vehicles.length; i++) {
   //     if (!makesByYear.includes(vehicles[i].manufacturer_name)) {
   //       makesByYear.push(vehicles[i].manufacturer_name);
@@ -580,7 +594,6 @@ function EV() {
 
   // console.log('models by make outside:', modelsByMake)
 
-
 // MSRP is dropped before here
   // const showChosenVehicle = (e) => {
   //   e.preventDefault();
@@ -611,6 +624,80 @@ function EV() {
 
   return (
     <>
+
+{!typeSelected ? 
+        <>
+          <div id="specific_vehicle_search">
+            <h4>Search by specific vehicle</h4>
+{/* ===================================================================== */}
+              {/* MODEL YEAR */}
+              <label htmlFor="automobiles">Model year: </label>
+
+              <select
+                name="automobiles"
+                id="automobiles"
+                onChange={(e) => showMakes(e)}
+              >
+                <option>-Select-</option>
+
+                <option value={2023}>2023</option>
+                <option value={2022}>2022</option>
+                <option value={2021}>2021</option>
+              </select>
+{/* ===================================================================== */}
+              {/* MAKE */}
+              <label htmlFor="automobiles">Make: </label>
+
+              <select
+                name="automobiles"
+                id="automobiles"
+                // onChange={selectModel}
+              >
+                <option>-Select-</option>
+
+                {makesByYear.length
+                  ? makesByYear.map((make) => (
+                      <option key={uuidv4()}>
+                        {make}
+                      </option>
+                    ))
+                  : null}
+              </select>
+{/* ===================================================================== */}
+              {/* MODELS */}
+              <label htmlFor="automobiles">Model: </label>
+
+              <select
+                name="automobiles"
+                id="automobiles"
+                // onChange={showChosenVehicle}
+              >
+                <option>-Select-</option>
+
+                {/* {selectedModels.length
+                  ? selectedModels.map((model) => (
+                      <option key={uuidv4()} value={model}>
+                        {model}
+                      </option>
+                    ))
+                  : null} */}
+              </select>
+              <button onClick={(e) => {
+                e.preventDefault()
+                setDropdownsFulfilled(true)}
+              }>Go</button>
+{/* ===================================================================== */}
+          </div>
+          <div></div>
+        </>
+        : null}
+      {dropdownsFulfilled && !typeSelected ? (
+        <SelectedVehicle vehicle={chosenVehicle} />
+      ) : null}
+
+        <br/>
+        <br/>
+
       <button onClick={goBack}>go back</button>
       <div>
         <div id="vehicle_type_container">
@@ -651,75 +738,7 @@ function EV() {
       <br />
       <br />
 
-      {!typeSelected ? 
-        <>
-          <div id="specific_vehicle_search">
-            <h4>Search by specific vehicle</h4>
-{/* ===================================================================== */}
-              {/* MODEL YEAR */}
-              <label htmlFor="automobiles">Model year: </label>
 
-              <select
-                name="automobiles"
-                id="automobiles"
-                // onChange={(e) => fetchVehicles(e, `27,29,25`, e.target.value)}
-              >
-                <option>-Select-</option>
-
-                <option value={2023}>2023</option>
-                {/* <option value={2022}>2022</option>
-                <option value={2021}>2021</option> */}
-              </select>
-{/* ===================================================================== */}
-              {/* MAKE */}
-              <label htmlFor="automobiles">Make: </label>
-
-              <select
-                name="automobiles"
-                id="automobiles"
-                // onChange={selectModel}
-              >
-                <option>-Select-</option>
-
-                {/* {makesByYear.length
-                  ? makesByYear.map((make) => (
-                      <option key={uuidv4()}>
-                        {make}
-                      </option>
-                    ))
-                  : null} */}
-              </select>
-{/* ===================================================================== */}
-              {/* MODELS */}
-              <label htmlFor="automobiles">Model: </label>
-
-              <select
-                name="automobiles"
-                id="automobiles"
-                // onChange={showChosenVehicle}
-              >
-                <option>-Select-</option>
-
-                {/* {selectedModels.length
-                  ? selectedModels.map((model) => (
-                      <option key={uuidv4()} value={model}>
-                        {model}
-                      </option>
-                    ))
-                  : null} */}
-              </select>
-              <button onClick={(e) => {
-                e.preventDefault()
-                setDropdownsFulfilled(true)}
-              }>Go</button>
-{/* ===================================================================== */}
-          </div>
-          <div></div>
-        </>
-        : null}
-      {dropdownsFulfilled && !typeSelected ? (
-        <SelectedVehicle vehicle={chosenVehicle} />
-      ) : null}
       <Highchart vehicle={chosenVehicle} />
     </>
   );

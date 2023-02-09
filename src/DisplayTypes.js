@@ -3,14 +3,15 @@ import { v4 as uuidv4 } from "uuid";
 
 
 function DisplayVehicles({data}) {
+  const [vehiclesDisplayed, setVehiclesDisplayed] = useState([]);
+  
   const yearsArray = [];
   const vehiclesArray = [];
-  // const [vehiclesDisplayed, setVehiclesDisplayed] = useState([]);
-
-
+  
   const handleChange = (e) => {
     const checked = e.target.checked;
     const currentYear = e.target.value;
+
 
     if (checked) {
       // Add years to years array ['2023', '2022', '2021']
@@ -25,6 +26,9 @@ function DisplayVehicles({data}) {
         vehiclesArray.push(data[i])
       } 
     }
+    console.log('upper vehicles array:', vehiclesArray)
+    // setVehiclesDisplayed(vehiclesArray)
+    // console.log('upper state:', vehiclesDisplayed)
 
     } else {
 
@@ -51,8 +55,13 @@ function DisplayVehicles({data}) {
           }
         }
       }
+      console.log('lower vehicles array:', vehiclesArray)
+      // setVehiclesDisplayed(vehiclesArray)
+      // console.log('lower state:', vehiclesDisplayed)
     }
   }
+
+  // console.log('outer vehicles array:', vehiclesArray)
 
 
   return (
@@ -81,7 +90,7 @@ function DisplayVehicles({data}) {
         </div>
       </fieldset>
 
-      {vehiclesArray.map((vehicle) => (
+      {vehiclesDisplayed.map((vehicle) => (
         <div id="each_vehicle" key={uuidv4()}>
           <strong style={{ display: "block" }}>
             {vehicle.manufacturer_name} {vehicle.model}
