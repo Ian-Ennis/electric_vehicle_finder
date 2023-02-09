@@ -32,10 +32,10 @@ function Highchart({ vehicle }) {
 
   return (
     <div>
-      <HighchartsReact
+      {/* <HighchartsReact
     highcharts={Highcharts}
     options={options}
-  />
+  /> */}
     </div>
   );
 }

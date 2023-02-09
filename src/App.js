@@ -643,7 +643,7 @@ function EV() {
               </div>
             </>
           ) : (
-            <DisplayTypes vehicles={selectedVehicles} />
+            <DisplayTypes data={selectedVehicles} />
           )}
         </div>
       </div>
