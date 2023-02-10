@@ -23,6 +23,10 @@ code {
   border: 2px solid grey;
 }
 
+#specific_vehicle {
+  border: 2px solid grey;
+}
+
 #vehicle_display_container {
   width: 65%;
   display: flex;

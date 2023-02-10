@@ -3,9 +3,7 @@ import sedan from "./Images/sedan.jpeg";
 import suv from "./Images/suv.jpeg";
 import pickup from "./Images/pickup.jpeg";
 import DisplayTypes from "./DisplayTypes";
-import DisplayVehicles from "./DisplayVehicles";
 import Dropdowns from "./Dropdowns";
-import Highchart from "./Highchart";
 
 
 const APIkey = `FWa7ECkCD7pV8HgIVkhHEKXfvBTbeo9ZI6bhRRY5`;
@@ -13,12 +11,8 @@ const APIkey = `FWa7ECkCD7pV8HgIVkhHEKXfvBTbeo9ZI6bhRRY5`;
 function EV() {
   const [vehicles, setVehicles] = useState([]);
   const [selectedVehicles, setSelectedVehicles] = useState([])
-
-
   const [typeSelected, setTypeSelected] = useState(false);
   const [dropdownsFulfilled, setDropdownsFulfilled] = useState(false)
-  const [selectedModels, setSelectedModels] = useState([])
-  const [chosenVehicle, setChosenVehicle] = useState([])
 
 
   const msrp = [
@@ -495,12 +489,6 @@ function EV() {
         });
       }
     });
-
-    // if (e.target.alt === "vehicle_type_icon") {
-    //   document.getElementById("vehicle_type_container").id =
-    //     "vehicle_display_container";
-    //   setTypeSelected(true);
-    // }
   }, []);
 
 
@@ -553,15 +541,12 @@ function EV() {
 
   return (
     <>
-
-
       {!typeSelected ? (
         <Dropdowns
           vehicles={vehicles}
           dropdownsFulfilled={dropdownsFulfilled}
           setDropdownsFulfilled={setDropdownsFulfilled}
           typeSelected={typeSelected}
-          chosenVehicle={chosenVehicle}
         />
       ) : null}
 
@@ -598,7 +583,6 @@ function EV() {
       <br />
       <br />
 
-      <Highchart vehicle={chosenVehicle} />
     </>
   );
 }
