@@ -533,7 +533,6 @@ function EV() {
     document.getElementById("vehicle_display_container").id =
     "vehicle_type_container";
   
-    // setVehicles([])
     setDropdownsFulfilled(false)
     setTypeSelected(false)
   }
@@ -552,7 +551,6 @@ function EV() {
 
 
       <button onClick={goBack}>go back</button>
-      <div>
         <div id="vehicle_type_container">
           {!typeSelected ? (
             <>
@@ -578,7 +576,6 @@ function EV() {
             <DisplayTypes data={selectedVehicles} />
           )}
         </div>
-      </div>
 
       <br />
       <br />

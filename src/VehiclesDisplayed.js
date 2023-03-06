@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
 function VehiclesDisplayed({ cars }) {
-  console.log("cars:", cars);
+
+    // console.log('cars:', cars)
 
   return (
     <>

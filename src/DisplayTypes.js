@@ -4,7 +4,6 @@ import VehiclesDisplayed from './VehiclesDisplayed';
 
 function DisplayVehicles({ data }) {
   const [vehiclesDisplayed, setVehiclesDisplayed] = useState([])
-  const [updater, setUpdater] = useState(0)
 
   const vehicles = useRef([]);
   const years = useRef([]);
@@ -27,8 +26,7 @@ function DisplayVehicles({ data }) {
           vehicles.current.push(vehicle)
         }
       }
-      setVehiclesDisplayed(vehicles.current)
-      setUpdater(updater + 1)
+      setVehiclesDisplayed([...vehicles.current])
 
 
     } else {
@@ -51,8 +49,7 @@ function DisplayVehicles({ data }) {
             vehicles.current.splice(index, 1);
           }
         }
-        setVehiclesDisplayed(vehicles.current)
-        setUpdater(updater - 1)
+        setVehiclesDisplayed([...vehicles.current])
       }
     }
   };
@@ -60,42 +57,45 @@ function DisplayVehicles({ data }) {
 
   return (
     <>
-      <fieldset>
-        <legend>Model Year</legend>
+      <div id="vehicles_displayed_container">
+        <VehiclesDisplayed cars={vehiclesDisplayed} />
+      </div>
 
-        <div>
-          <label htmlFor="2023">2023</label>
-          <input
-            type="checkbox"
-            name="checked_year"
-            value="2023"
-            onChange={handleChange}
-          />
-        </div>
+      <div id="checkbox container">
+        <fieldset>
+          <legend>Model Year</legend>
 
-        <div>
-          <label htmlFor="2022">2022</label>
-          <input
-            type="checkbox"
-            name="checked_year"
-            value="2022"
-            onChange={handleChange}
-          />
-        </div>
+          <div>
+            <label htmlFor="2023">2023</label>
+            <input
+              type="checkbox"
+              name="checked_year"
+              value="2023"
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="2021">2021</label>
-          <input
-            type="checkbox"
-            name="checked_year"
-            value="2021"
-            onChange={handleChange}
-          />
-        </div>
-      </fieldset>
+          <div>
+            <label htmlFor="2022">2022</label>
+            <input
+              type="checkbox"
+              name="checked_year"
+              value="2022"
+              onChange={handleChange}
+            />
+          </div>
 
-      <VehiclesDisplayed cars={vehiclesDisplayed}/>
-
+          <div>
+            <label htmlFor="2021">2021</label>
+            <input
+              type="checkbox"
+              name="checked_year"
+              value="2021"
+              onChange={handleChange}
+            />
+          </div>
+        </fieldset>
+      </div>
     </>
   );
 }

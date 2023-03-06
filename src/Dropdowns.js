@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 // import Highchart from "./Highchart";
 
 
-
 function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFulfilled }) {
   const [makes, setMakes] = useState([]);
   const [models, setModels] = useState([]);
@@ -28,8 +27,6 @@ function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFul
     setMakes(makesByYear);
   };
 
-//   console.log("makes state:", makes);
-
 
   const modelsByMake = [];
   const selectModel = (e) => {
@@ -48,8 +45,6 @@ function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFul
     setModels(modelsByMake);
   };
 
-//   console.log("models state:", models);
-
 
   const showselectedVehicle = (e) => {
     e.preventDefault();
@@ -63,16 +58,16 @@ function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFul
     }
   };
 
-//   console.log('selected vehicle state:', selectedVehicle)
-
 
   return (
     <>
       <>
         <div id="specific_vehicle_search">
           <h4>Search by specific vehicle</h4>
-          {/* ===================================================================== */}
+    {/* ===================================================================== */}
+
           {/* MODEL YEAR */}
+
           <label htmlFor="automobiles">Model year: </label>
 
           <select
@@ -86,8 +81,10 @@ function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFul
             <option value={2022}>2022</option>
             <option value={2021}>2021</option>
           </select>
-          {/* ===================================================================== */}
+    {/* ===================================================================== */}
+
           {/* MAKE */}
+
           <label htmlFor="automobiles">Make: </label>
 
           <select 
@@ -103,8 +100,10 @@ function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFul
           </select>
 
           <label htmlFor="pet-select">Choose a pet:</label>
-          {/* ===================================================================== */}
+    {/* ===================================================================== */}
+
           {/* MODELS */}
+
           <label htmlFor="automobiles">Model: </label>
 
           <select
@@ -131,7 +130,7 @@ function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFul
           >
             Go
           </button>
-          {/* ===================================================================== */}
+    {/* ===================================================================== */}
         </div>
         <div></div>
       </>
