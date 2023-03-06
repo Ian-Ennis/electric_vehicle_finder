@@ -7,7 +7,7 @@ function SelectedVehicle({ vehicle }) {
             <strong style={{display: "block"}}>{vehicle[0].manufacturer_name} {vehicle[0].model}</strong>
             <img src={vehicle[0].photo_url} alt="vehicle_photo" /><p style={{display: "inline"}}></p>
             <strong style={{display: "block"}}>Alternative Fuel Economy (Combined)</strong><p style={{display: "inline"}}>{vehicle[0].alternative_fuel_economy_combined} MPGe</p>
-            <strong style={{display: "block"}}>Electric-Only Range:</strong><p style={{display: "inline"}}>{vehicle[0].electric_range}</p>
+            <strong style={{display: "block"}}>Electric-Only Range:</strong><p style={{display: "inline"}}>{vehicle[0].electric_range} Miles</p>
             {vehicle[0].charging_rate_level_2 ? 
               <><strong style={{display: "block"}}>Charging Rate:</strong><p style={{display: "inline"}}><em>Level 2: </em>{vehicle[0].charging_rate_level_2} | <em>DC Fast: </em>{vehicle[0].charging_rate_dc_fast}</p></>
                  : null}

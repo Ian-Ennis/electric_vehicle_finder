@@ -98,9 +98,11 @@ function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFul
             <option>-Select-</option>
 
             {makes.length
-              ? makes.map((make) => <option key={uuidv4()}>{make}</option>)
+              ? makes.map((make) => <option key={uuidv4()} value={make}>{make}</option>)
               : null}
           </select>
+
+          <label htmlFor="pet-select">Choose a pet:</label>
           {/* ===================================================================== */}
           {/* MODELS */}
           <label htmlFor="automobiles">Model: </label>
