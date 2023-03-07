@@ -1,12 +1,4 @@
-{
-  "metadata": { "version": "0.1.0", "resultset": { "count": 191 } },
-  "inputs": {
-    "category_id": "27,29,25",
-    "fuel_id": "41",
-    "model_year": "2021,2022,2023"
-  },
-  "status": 200,
-  "result": [
+[
     {
       "id": 13221,
       "fuel_id": 41,
@@ -8221,4 +8213,3 @@
       "light_duty_emission_certifications": []
     }
   ]
-}

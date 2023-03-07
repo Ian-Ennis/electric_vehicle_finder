@@ -1,17 +1,30 @@
+import { useState } from 'react'
+import Highchart from './Highchart';
 import { v4 as uuidv4 } from "uuid";
 
 function VehiclesDisplayed({ cars }) {
+  const [comparisonVehicles, setComparisonVehicles] = useState([])
 
-    // console.log('cars:', cars)
+  function chooseVehicle(e, vehicle) {
+    e.preventDefault();
+
+    setComparisonVehicles([...comparisonVehicles, vehicle])
+  }
+
 
   return (
     <>
       {cars
         ? cars.map((vehicle) => (
             <div id="each_vehicle" key={uuidv4()}>
-              <strong style={{ display: "block" }}>
-                {vehicle.manufacturer_name} {vehicle.model}
-              </strong>
+
+              <div className="vehicle_select_container">
+                <strong style={{ display: "block" }}>
+                  {vehicle.manufacturer_name} {vehicle.model}
+                </strong>
+                <button onClick={(e) => chooseVehicle(e, vehicle)}>Select</button>
+              </div>
+
               <img src={vehicle.photo_url} alt="vehicle_photo" />
               <p style={{ display: "inline" }}></p>
               <strong style={{ display: "block" }}>
@@ -56,6 +69,8 @@ function VehiclesDisplayed({ cars }) {
             </div>
           ))
         : null}
+
+        {comparisonVehicles.length ? <Highchart selected={comparisonVehicles}/> : null}
     </>
   );
 }

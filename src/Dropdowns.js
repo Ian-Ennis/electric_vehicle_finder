@@ -1,7 +1,6 @@
 import { useState } from "react";
 import SelectedVehicle from "./SelectedVehicle";
 import { v4 as uuidv4 } from "uuid";
-// import Highchart from "./Highchart";
 
 
 function Dropdowns({ vehicles, typeSelected, dropdownsFulfilled, setDropdownsFulfilled }) {

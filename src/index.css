@@ -50,3 +50,8 @@ code {
   background-color: rgb(207, 207, 207);
   width: 300px;
 }
+
+.vehicle_select_container {
+  display: flex;
+  flex-direction: row;
+}

@@ -16,6 +16,7 @@ function DisplayVehicles({ data }) {
     if (checked) {
       // Add years to years array ['2023', '2022', '2021']
       years.current.push(currentYear)
+      years.current.sort().reverse()
 
       // Add vehicles for selected years, if not already in the array
       for (let i = 0; i < data.length; i++) {
@@ -26,6 +27,10 @@ function DisplayVehicles({ data }) {
           vehicles.current.push(vehicle)
         }
       }
+      
+      vehicles.current.sort(
+        (y1, y2) => (y1.model_year < y2.model_year) ? 1 : (y1.model_year > y2.model_year) ? -1 : 0
+      )
       setVehiclesDisplayed([...vehicles.current])
 
 
@@ -39,6 +44,8 @@ function DisplayVehicles({ data }) {
             years.current.splice(index, 1);
           }
         }
+        years.current.sort().reverse()
+
 
         // Remove irrelevant vehicle years from vehicles array
         for (let i = 0; i < data.length; i++) {
@@ -49,6 +56,10 @@ function DisplayVehicles({ data }) {
             vehicles.current.splice(index, 1);
           }
         }
+
+        vehicles.current.sort(
+          (y1, y2) => (y1.model_year < y2.model_year) ? 1 : (y1.model_year > y2.model_year) ? -1 : 0
+        )
         setVehiclesDisplayed([...vehicles.current])
       }
     }

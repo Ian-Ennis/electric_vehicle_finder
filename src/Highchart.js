@@ -3,9 +3,9 @@ import { render } from "react-dom";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-function Highchart({ vehicle }) {
+function Highchart({ selected }) {
 
-    // console.log('in highchart:', vehicle)
+    console.log('highchart state:', selected)
 
     const options = {
         chart: {
@@ -16,7 +16,7 @@ function Highchart({ vehicle }) {
         },
         series: [
           {
-            data: vehicle.msrp
+            data: 25,
           },
           {
             data: [1, 2, 1, 4, 3, 6]
@@ -32,10 +32,10 @@ function Highchart({ vehicle }) {
 
   return (
     <div>
-      {/* <HighchartsReact
+      <HighchartsReact
     highcharts={Highcharts}
     options={options}
-  /> */}
+  />
     </div>
   );
 }
