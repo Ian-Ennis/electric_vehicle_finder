@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import VehicleList from './VehicleList';
 import Highchart from './Highchart';
 import { v4 as uuidv4 } from "uuid";
 
@@ -11,9 +12,15 @@ function VehiclesDisplayed({ cars }) {
     setComparisonVehicles([...comparisonVehicles, vehicle])
   }
 
-
   return (
     <>
+      {comparisonVehicles.length ? 
+      <>
+        <VehicleList selected={comparisonVehicles} setSelected={setComparisonVehicles} />
+        <Highchart selected={comparisonVehicles} /> 
+      </>
+      : null}
+
       {cars
         ? cars.map((vehicle) => (
             <div id="each_vehicle" key={uuidv4()}>
@@ -69,8 +76,6 @@ function VehiclesDisplayed({ cars }) {
             </div>
           ))
         : null}
-
-        {comparisonVehicles.length ? <Highchart selected={comparisonVehicles}/> : null}
     </>
   );
 }
